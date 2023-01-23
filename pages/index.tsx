@@ -1,32 +1,26 @@
 import { Header } from '@/components/Header';
 import { Landing } from '@/components/Landing';
+import { Category } from '@/models/category';
+import { fetchCategories } from '@/utils/fetchCategories';
 import { Tab } from '@headlessui/react';
-import { type GetServerSideProps } from 'next';
+import { NextPage, type GetServerSideProps } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
-import { useState } from 'react';
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  // const categories = await fetchCategories();
+type Props = {
+  categories: Category[];
+};
+
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
+  const categories = await fetchCategories();
 
   return {
-    props: {},
+    props: {
+      categories,
+    },
   };
 };
 
-export default function Home() {
-  const [categories, setCategories] = useState<Category[]>([
-    {
-      _id: 'iphone',
-      title: 'Iphones',
-      slug: 'as',
-    },
-    {
-      _id: 'mac',
-      title: 'Macs',
-      slug: 'sda',
-    },
-  ]);
+const Home: NextPage<Props> = ({ categories }) => {
   const showProducts: any = (n: number) => {};
   return (
     <>
@@ -50,8 +44,8 @@ export default function Home() {
             <Tab.List className="flex justify-center">
               {categories.map((category) => (
                 <Tab
-                  key={category._id}
-                  id={category._id}
+                  key={category._id.toString()}
+                  id={category._id.toString()}
                   className={({ selected }) =>
                     `whitespace-nowrap rounded-t-lg py-3 px-5 text-sm font-light outline-none md:py-4 md:px-6 md:text-base ${
                       selected
@@ -75,4 +69,6 @@ export default function Home() {
       </section>
     </>
   );
-}
+};
+
+export default Home;
