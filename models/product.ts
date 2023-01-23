@@ -1,18 +1,22 @@
 import { ObjectId } from 'mongodb';
-import { getModelForClass, prop as Property, Ref } from '@typegoose/typegoose';
+import {
+  getModelForClass,
+  prop as Property,
+  type Ref,
+} from '@typegoose/typegoose';
 import { Category } from './category';
 
-class Product {
+export class Product {
   readonly _id!: ObjectId;
 
   @Property({ required: true })
   title!: string;
 
   @Property({ required: true })
-  slug!: string;
+  image_url!: string;
 
   @Property({ required: true })
-  name!: string;
+  slug!: string;
 
   @Property({ required: true })
   description!: string;
