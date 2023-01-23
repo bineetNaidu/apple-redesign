@@ -7,6 +7,7 @@ const nextConfig = {
       'github.com',
       'gravatar.com',
       'raw.githubusercontent.com',
+      'drive.google.com',
     ],
   },
 };
