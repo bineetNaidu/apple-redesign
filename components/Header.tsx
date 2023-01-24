@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import Link from 'next/link';
 import { FC } from 'react';
 import {
@@ -17,7 +17,7 @@ export const Header: FC = () => {
             <Image
               src="https://rb.gy/vsvv2o"
               alt="logo"
-              fill
+              layout="fill"
               objectFit="contain"
             />
           </div>

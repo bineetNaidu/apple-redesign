@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { FC } from 'react';
 import { Button } from './Button';
 
@@ -24,7 +24,7 @@ export const Landing: FC = () => {
         <Image
           src="https://raw.githubusercontent.com/lukef7fywmrp/apple-redesign-yt/main/public/iphone.png"
           alt="landing image"
-          fill
+          layout="fill"
           objectFit="contain"
         />
       </div>
